@@ -44,6 +44,32 @@ def projects_delete(project_id):
 		return redirect(url_for("projects",))
 
 
+@app.route('/projects/<int:project_id>/entries/', methods = ['GET'])
+def entries(project_id):
+	if request.method == 'GET':
+		return render_template('entriesShow.html',  project_id = project_id)
+
+@app.route('/projects/<int:project_id>/entries/new/', methods = ['GET', 'POST'])
+def entries_new(project_id):
+	if request.method == 'GET':
+		return render_template('entriesNew.html',  project_id = project_id)
+	if request.method == 'POST':
+		return redirect(url_for("entries",project_id = project_id))
+
+@app.route('/projects/<int:project_id>/entries/edit/<int:entry_id>/', methods = ['GET', 'POST'])
+def entries_edit(project_id, entry_id):
+	if request.method == 'GET':
+		return render_template('entriesEdit.html',  project_id = project_id, entry_id = entry_id)
+	if request.method == 'POST':
+		return redirect(url_for("entries", project_id=project_id,))
+
+@app.route('/projects/<int:project_id>/entries/delete/<int:entry_id>/', methods = ['GET', 'POST'])
+def entries_delete(project_id, entry_id):
+	if request.method == 'GET':
+		return render_template('entriesDelete.html',  project_id = project_id, entry_id=entry_id)
+	if request.method == 'POST':
+		return redirect(url_for("entries", project_id=project_id))
+
 
 if __name__ == '__main__':
     app.secret_key = "somesecretkey"
