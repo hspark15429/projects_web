@@ -18,6 +18,8 @@ class Category(Base):
 
     id = Column(Integer, primary_key=True)
     name = Column(String(250), nullable=False)
+    project_id = Column(Integer,ForeignKey('projects.id'), nullable = False)
+    project = relationship(Project)
  
 class Entry(Base):
     __tablename__ = 'entries'

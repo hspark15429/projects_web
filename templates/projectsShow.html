@@ -6,24 +6,23 @@
 </head>
 <body>
 
-<div>Projects</div>
-
-<!--  # for i in  range(len(projects)//3+1)  -->
-
 <div>
-	<div>
-		FUCK
+	{%for project in projects%}
+		<div>{{project.name}}</div>
 		<div>
-			<a href="{{ url_for('projects_new', project_id = 1) }}">New</a>
-			<a href="{{ url_for('projects_edit', project_id = 1) }}">Edit</a>
-			<a href="{{ url_for('projects_delete', project_id = 1) }}">Delete</a>
+			<ul>
+				<!-- maybe come back to optimize. -->
+				{% for category in categories %}
+					{% if category.project_id == project.id %}
+						<li>{{category.name}}</li>
+						{% endif %}
+					{% endfor %}
+			</ul>
 		</div>
-	</div>
-	<div>THIS</div>
-	<div>TOWN</div>
+		{% endfor %}
 </div>
 
-<!--  # endfor  -->
+
 
 </body>
 </html>
