@@ -24,9 +24,10 @@ class Category(Base):
 class Entry(Base):
     __tablename__ = 'entries'
 
+    id = Column(Integer, primary_key=True)
     description = Column(String(250), nullable = False)
-    category_id = Column(Integer,ForeignKey('categories.id'), primary_key = True)
-    project_id = Column(Integer,ForeignKey('projects.id'), primary_key = True)
+    category_id = Column(Integer,ForeignKey('categories.id'))
+    project_id = Column(Integer,ForeignKey('projects.id'))
     project = relationship(Project)
     category = relationship(Category)
 

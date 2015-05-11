@@ -6,15 +6,20 @@
 </head>
 <body>
 
-<div>Entries</div>
+<div>{{ project.name }}</div>
 
-<!--  # for i in  range(len(projects)//3+1)  -->
 
-<div>
-Entries!!!!
-</div>
-
-<!--  # endfor  -->
+{% for category in categories %}
+	<div>{{ category.name }}</div>
+	<ul>
+		{% for entry in entries %}
+			{% if entry.category.id == category.id %}
+				<li>{{ entry.description}}</li>
+				<li>{{ entry.id}}</li>
+				{%endif%}
+		{%endfor%}
+	</ul>
+	{%endfor%}
 
 </body>
 </html>
