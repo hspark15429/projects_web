@@ -5,10 +5,18 @@
 	<LINK href="{{ url_for('static', filename='style.css') }}" rel="stylesheet" type="text/css">
 </head>
 <body>
+<div>
+	All Projects
+	<a href="{{url_for('projects_new')}}">New Project</a>
+</div>
 
 <div>
 	{%for project in projects%}
-		<div>{{project.name}}</div>
+		<div>
+		<a href="{{url_for('entries', project_id=project.id)}}">{{project.name}}</a>
+		<a href="{{url_for('projects_edit', project_id=project.id)}}">Edit</a>
+		<a href="{{url_for('projects_delete', project_id=project.id)}}">Delete</a>
+		</div>
 		<div>
 			<ul>
 				<!-- maybe come back to optimize. -->

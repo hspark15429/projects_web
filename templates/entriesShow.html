@@ -6,15 +6,28 @@
 </head>
 <body>
 
-<div>{{ project.name }}</div>
-
+<div>
+	{{ project.name }}
+	<a href="{{url_for('categories_new',project_id=project.id)}}">New Category</a>
+	<a href="{{url_for('projects')}}">Home</a>
+</div>
+</br>
 
 {% for category in categories %}
-	<div>{{ category.name }}</div>
+	<div>
+		{{ category.name }}
+		<a href="{{url_for('categories_edit',project_id=project.id, category_id=category.id)}}">Edit</a>
+		<a href="{{url_for('categories_delete',project_id=project.id, category_id=category.id)}}">Delete</a>
+		<a href="{{url_for('entries_new',project_id=project.id, category_id=category.id)}}">New Entry</a>
+	</div>
 	<ul>
 		{% for entry in entries %}
 			{% if entry.category.id == category.id %}
-				<li>{{ entry.description}}</li>
+				<li>
+					{{ entry.description}}
+					<a href="{{url_for('entries_edit',project_id=project.id, entry_id=entry.id)}}">Edit</a>
+					<a href="{{url_for('entries_delete',project_id=project.id, entry_id=entry.id)}}">Delete</a>
+				</li>
 				<li>{{ entry.id}}</li>
 				{%endif%}
 		{%endfor%}
