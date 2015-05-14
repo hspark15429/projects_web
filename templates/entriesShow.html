@@ -28,7 +28,6 @@
 					<a href="{{url_for('entries_edit',project_id=project.id, entry_id=entry.id)}}">Edit</a>
 					<a href="{{url_for('entries_delete',project_id=project.id, entry_id=entry.id)}}">Delete</a>
 				</li>
-				<li>{{ entry.id}}</li>
 				{%endif%}
 		{%endfor%}
 	</ul>
